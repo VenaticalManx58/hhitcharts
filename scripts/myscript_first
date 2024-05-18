@@ -1,0 +1,5 @@
+#!/bin/bash
+cd www/hhitcharts.ru/
+source ../../flaskenv/bin/activate
+python3 scripts/data_processing.py 1
+deactivate

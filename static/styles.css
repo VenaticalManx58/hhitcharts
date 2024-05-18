@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #004488;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+section {
+    margin: 5px;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.info-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    vertical-align: middle;
+    z-index: 100;
+}
+
+.social-links {
+    text-align: center;
+}
+
+.social-links img {
+    width: 50px; /* Ширина изображения */
+    height: 50px; /* Высота изображения */
+    margin: 10px; /* Отступы между изображениями */
+}
+
+
+.tooltip {
+    display: none;  /* Скрыто по умолчанию */
+    position: absolute;
+    width: 500px;
+    background-color: #f9f9f9;
+    border: 1px solid #d3d3d3;
+    padding: 5px;
+    z-index: 100;
+}
+
+.info-icon:hover + .tooltip {
+    display: block;  /* Показывается при наведении */
+}
+
+.update-text {
+    margin: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr repeat(3, 2fr);
+    grid-template-rows: repeat(2, 1fr);
+    /* grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(4, 1fr); */
+    /* grid-gap: 100px;  Отступы между блоками  */
+}
+
+.text-widget {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4; /* Span from row 1 to 5 */
+    /* padding: 20px; */
+}
+
+
+.graph {
+    width: auto;
+}
+
+.graph-header {
+    text-align: center; /* Центрирование текста в заголовке */
+    margin-bottom: 0px; /* Отступ между заголовком и графиком */
+    z-index: 100;
+}
+
+.graph-content {
+    width: auto;
+}
+
+#graph1 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+
+  
+#graph2 {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+  
+#graph3 {
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+}
+  
+#graph4 {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+#graph-content5 {
+    transform: scale(1);
+}
+  
+#graph5 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+  
+#graph6 {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+  
+#graph7 {
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+}

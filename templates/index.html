@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <title>Профессии</title>
+    <script>
+        function submitFormOnSelectChange() {
+            document.getElementById('professionForm').submit(); // Отправка формы
+        }
+    </script>
+</head>
+<body>
+
+    <div class="update-text">
+        <p>Данные были обновлены {{ last_date }} на основе <a href="{{ search_url }}">поискового запроса</a>. Вакансий обработано: {{ num_vacancies }}</p>
+        
+    </div>
+    
+
+    <div class="container">
+        <div class="text-widget">
+            <h1>Выберите Профессию</h1>
+            <form id="professionForm" method="post">
+                <label for="profession">Профессия:</label>
+                <select id="profession" name="profession" onchange="submitFormOnSelectChange()">
+                    {% for profession in professions %}
+                    <option value="{{ profession }}" {% if profession == selected_profession %}selected{% endif %}>
+                        {{ profession }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+
+        {% for i in range(charts|length) %}
+        <div class="graph" id="graph{{ i + 1 }}">
+            <div class="graph-header">
+                <h3>{{ charts_info[i].title }}
+                    <img src="{{ url_for('static', filename='images/info_pic.png') }}" class="info-icon" alt="info">
+                    <span class="tooltip">{{ charts_info[i].description }}</span>
+                </h3>
+            </div>
+            <div class="graph-content" id="graph-content{{ i + 1 }}">
+                {{ charts[i] | safe }}
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="social-links">
+        <!-- Ссылка на GitHub -->
+        <a href="https://github.com/VenaticalManx58/hhitcharts" target="_blank">
+            <img src="{{ url_for('static', filename='images/github_logo.png') }}" class="github-icon" alt="github">
+        </a>
+        <!-- Ссылка на Telegram -->
+        <a href="https://t.me/jvstw0kevp" target="_blank">
+            <img src="{{ url_for('static', filename='images/telegram_logo.png') }}" class="telegram-icon" alt="telegram">
+        </a>
+    </div>
+    
+
+    <script>
+        document.querySelectorAll('.info-icon').forEach(function(icon) {
+            icon.addEventListener('mouseover', function() {
+                this.nextSibling.style.visibility = 'visible';
+                this.nextSibling.style.opacity = '1';
+                this.nextSibling.style.transition = 'opacity 0.5s';
+            });
+            icon.addEventListener('mouseout', function() {
+                this.nextSibling.style.opacity = '0';
+                this.nextSibling.style.transition = 'opacity 0.5s';
+            });
+        });
+    </script>
+
+
+</body>
+</html>

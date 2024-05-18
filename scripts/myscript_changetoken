@@ -1,0 +1,5 @@
+#!/bin/bash
+cd www/hhitcharts.ru/scripts/
+source ../../../flaskenv/bin/activate
+python3 change_token.py
+deactivate
