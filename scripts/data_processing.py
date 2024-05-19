@@ -31,7 +31,7 @@ professions_dict_1 = {
     "Data engineer": 'name:(!"data engineer" or !"инженер данных" or "специалист по данным" or "Специалист по работе с данными" or "дата инженер")',
     "Python developer": 'name:(python or django or drf or backend or fastapi or flask)  and description:(python or django or drf or fastapi or flask)',
     "Golang developer": 'name:(!"go" or !"golang")',
-    "Java developer": 'name:(!"java")',
+    "Java developer": 'name:(!"java")'
 }
 # 8
 professions_dict_2 = {
