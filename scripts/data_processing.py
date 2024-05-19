@@ -24,31 +24,32 @@ nltk.download('stopwords')
 pd.options.mode.chained_assignment = None  # default='warn'
 
 professions_dict_1 = {
-    "Product analyst": '"Product analyst" or "Продуктовый аналитик"',
-    "Data scientist": '"data scientist"  or "data science"',
-    "ML engineer": '"ml engineer" or "Machine learning" or "Машинное обучение" or "ml"',
-    "Data engineer": '"data engineer" or "Инженер данных"',
-    "Python developer": '"python" or "django" or "drf" or "flask" or "fastapi"',
-    "Golang developer": '"golang" or "go"',
-    "Java developer": '"java"',
-    "Frontend developer": '"frontend" or "front end" or "react" or "vue.js"'
+    "Data analyst": 'name:(!"data analyst" or !"аналитик данных" )'
+    "Product analyst": 'name:("Product analyst" or "Продуктовый аналитик")',
+    "Data scientist": 'name:("data scientist" or "data science" or "datascience")',
+    "ML engineer": 'name:("ml engineer" or "Machine learning" or "Машинное обучение" or "ml" or "машинного обучения" or "nlp" or "computer vision")',
+    "Data engineer": 'name:(!"data engineer" or !"инженер данных" or "специалист по данным" or "Специалист по работе с данными" or "дата инженер")',
+    "Python developer": 'name:(python or django or drf or backend or fastapi or flask)  and description:(python or django or drf or fastapi or flask)',
+    "Golang developer": 'name:(!"go" or !"golang")',
+    "Java developer": 'name:(!"java")',
 }
 # 8
 professions_dict_2 = {
-    "Android developer": 'name:("Android" or "Андроид") and description:("kotlin" or "java" or "sdk")',
+    "Frontend developer": '("frontend" or "front end" or "react" or "vue.js") and name:("frontend" or "front-end")'
+    "Android developer": 'name:("Android" or "Андроид") and description:("kotlin" or "java" or "sdk" or !"мобильных приложений")',
     "IOS developer": 'name:("ios" or "swift")',
-    "QA engineer": '"QA engineer" or "тестировщик" or "по тестированию"',
-    "System analyst": '"system analyst" or "системный аналитик"'
+    "QA engineer": 'name:("QA engineer" or "тестировщик" or "по тестированию" or "QA инженер")',
+    "System analyst": 'name:("system data analyst" or "system analyst" or "системный аналитик")'
 }
 # 12
 professions_dict_3 = {
-    "Business analyst": '"business analyst" or "бизнес аналитик" or "bi-аналитик"',
-    "UX UI designer": '"UX/UI" "UI/UX"',
-    "C C++ developer": '"C++"',
+    "Business analyst": 'name:("Business Аnalyst" or "business analyst" or "бизнес аналитик" or "bi-аналитик")',
+    "UX UI designer": 'name:(!"UX/UI дизайнер" or !"UX/UI designer" or !"UI/UX designer" or "!UI/UX дизайнер" or !"дизайнер интерфейсов")',
+    "C C++ developer": 'description:(!"C++") and name:(!"программист" or !"developer" or !"разработчик" or !"C++")',
     "1C developer": '"1C developer" or "1C разработчик" or "1C программист" or "программист 1C" or "разработчик 1C"',
-    "PHP developer": '"PHP"',
-    "Product manager": '!"Product manager" or !"продукт менеджер" or !"продуктовый менеджер"',
-    "Project manager": '!"Project manager" or !"проджект менеджер" or !"менеджер проекта" or !"менеджер проектов" or !"проектный менеджер" or !"руководитель проектов" or !"руководитель проекта"'
+    "PHP developer": 'name:("PHP")',
+    "Product manager": 'name:("Product manager" or "продукт менеджер" or "продуктовый менеджер")',
+    "Project manager": 'name:(!"Project manager" or !"проджект менеджер" or !"менеджер проекта" or !"менеджер проектов" or !"проектный менеджер" or !"руководитель проектов" or !"руководитель проекта")'
 }
 # 19
 
@@ -165,7 +166,9 @@ def professional_role_skills_analyze(vacancies_ids): #потом заменит�
                 else:
                     cf = 0
                 if cf != 0:
-                    salary_exp.append((data['experience']['name'], round(cf*safe_average(sal['from'], sal['to']))))       
+                    salary_value = round(cf*safe_average(sal['from'], sal['to']))
+                    if salary_value <= 900000:
+                        salary_exp.append((data['experience']['name'], salary_value))       
         except:
             print(data)
             break
