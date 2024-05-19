@@ -24,7 +24,7 @@ nltk.download('stopwords')
 pd.options.mode.chained_assignment = None  # default='warn'
 
 professions_dict_1 = {
-    "Data analyst": 'name:(!"data analyst" or !"аналитик данных" )'
+    "Data analyst": 'name:(!"data analyst" or !"аналитик данных" )',
     "Product analyst": 'name:("Product analyst" or "Продуктовый аналитик")',
     "Data scientist": 'name:("data scientist" or "data science" or "datascience")',
     "ML engineer": 'name:("ml engineer" or "Machine learning" or "Машинное обучение" or "ml" or "машинного обучения" or "nlp" or "computer vision")',
@@ -35,7 +35,7 @@ professions_dict_1 = {
 }
 # 8
 professions_dict_2 = {
-    "Frontend developer": '("frontend" or "front end" or "react" or "vue.js") and name:("frontend" or "front-end")'
+    "Frontend developer": '("frontend" or "front end" or "react" or "vue.js") and name:("frontend" or "front-end")',
     "Android developer": 'name:("Android" or "Андроид") and description:("kotlin" or "java" or "sdk" or !"мобильных приложений")',
     "IOS developer": 'name:("ios" or "swift")',
     "QA engineer": 'name:("QA engineer" or "тестировщик" or "по тестированию" or "QA инженер")',
