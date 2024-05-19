@@ -261,12 +261,6 @@ def generate_charts(profession, c):
     fig.add_vline(x=mean_salary, line=dict(color="Orange", width=2, dash="dashdot"), annotation_text=f"Среднее: {mean_salary}", annotation_position="top right")
     fig.add_vline(x=median_salary, line=dict(color="Green", width=2, dash="dashdot"), annotation_text=f"Медиана: {median_salary}", annotation_position="top left")
 
-    sns_kde = sns.kdeplot(y_data, bw_adjust=0.4)  # Увеличьте bw_adjust для более гладкой линии
-    kde_x = sns_kde.get_lines()[0].get_data()[0]
-    kde_y = sns_kde.get_lines()[0].get_data()[1]
-
-    kde_y_scaled = kde_y / kde_y.max() * max(bin_counts)
-
     fig.add_trace(go.Scatter(x=kde_x, y=kde_y_scaled, mode='lines', name='KDE', line=dict(color='red')))
 
     fig.update_layout(
