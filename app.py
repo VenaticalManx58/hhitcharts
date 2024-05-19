@@ -42,7 +42,7 @@ def get_num_vacancies_and_date(profession):
     return num_vacancies, last_date
 
 professions_dict = {
-    "Data analyst": 'name:(!"data analyst" or !"аналитик данных" )'
+    "Data analyst": 'name:(!"data analyst" or !"аналитик данных" )',
     "Product analyst": 'name:("Product analyst" or "Продуктовый аналитик")',
     "Data scientist": 'name:("data scientist" or "data science" or "datascience")',
     "ML engineer": 'name:("ml engineer" or "Machine learning" or "Машинное обучение" or "ml" or "машинного обучения" or "nlp" or "computer vision")',
@@ -50,11 +50,11 @@ professions_dict = {
     "Python developer": 'name:(python or django or drf or backend or fastapi or flask)  and description:(python or django or drf or fastapi or flask)',
     "Golang developer": 'name:(!"go" or !"golang")',
     "Java developer": 'name:(!"java")',
-    "Frontend developer": '("frontend" or "front end" or "react" or "vue.js") and name:("frontend" or "front-end")'
+    "Frontend developer": '("frontend" or "front end" or "react" or "vue.js") and name:("frontend" or "front-end")',
     "Android developer": 'name:("Android" or "Андроид") and description:("kotlin" or "java" or "sdk" or !"мобильных приложений")',
     "IOS developer": 'name:("ios" or "swift")',
     "QA engineer": 'name:("QA engineer" or "тестировщик" or "по тестированию" or "QA инженер")',
-    "System analyst": 'name:("system data analyst" or "system analyst" or "системный аналитик")'
+    "System analyst": 'name:("system data analyst" or "system analyst" or "системный аналитик")',
     "Business analyst": 'name:("Business Аnalyst" or "business analyst" or "бизнес аналитик" or "bi-аналитик")',
     "UX UI designer": 'name:(!"UX/UI дизайнер" or !"UX/UI designer" or !"UI/UX designer" or "!UI/UX дизайнер" or !"дизайнер интерфейсов")',
     "C C++ developer": 'description:(!"C++") and name:(!"программист" or !"developer" or !"разработчик" or !"C++")',
